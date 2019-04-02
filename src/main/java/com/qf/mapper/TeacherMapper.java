@@ -2,6 +2,7 @@ package com.qf.mapper;
 
 import com.qf.dao.IBaseDao;
 import com.qf.entity.Teacher;
+import org.apache.ibatis.annotations.Param;
 
 public interface TeacherMapper extends IBaseDao<Teacher> {
     int deleteByPrimaryKey(Integer id);
@@ -15,4 +16,6 @@ public interface TeacherMapper extends IBaseDao<Teacher> {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    Teacher getTeacherByNameAndPassword(@Param("tName") String tName,@Param("tPassword") String tPassword);
 }

@@ -68,4 +68,14 @@
       t_password = #{tPassword,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getTeacherByNameAndPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from teacher where t_name=#{tName} and t_password=#{tPassword}
+  </select>
+  <select id="getList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from teacher
+  </select>
 </mapper>

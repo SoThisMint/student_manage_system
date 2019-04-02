@@ -3,6 +3,8 @@ package com.qf.service.impl;
 import com.qf.dao.IBaseDao;
 import com.qf.service.IBaseService;
 
+import java.util.List;
+
 /**
  * @author ：Tony
  * @date ：Created in 2019/4/2 19:00
@@ -44,4 +46,8 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
         return getBaseDao().updateByPrimaryKey(t);
     }
 
+    @Override
+    public List<T> getList() {
+        return getBaseDao().getList();
+    }
 }

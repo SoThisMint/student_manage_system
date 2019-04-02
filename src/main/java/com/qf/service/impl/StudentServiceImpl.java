@@ -24,4 +24,9 @@ public class StudentServiceImpl extends BaseServiceImpl<Student> implements IStu
     public IBaseDao<Student> getBaseDao() {
         return studentMapper;
     }
+
+    @Override
+    public Student login(Student student) {
+        return studentMapper.getStudentByNameAndPassword(student.getsName(),student.getsPassword());
+    }
 }

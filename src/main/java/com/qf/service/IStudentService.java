@@ -1,7 +1,6 @@
 package com.qf.service;
 
 import com.qf.entity.Student;
-import qf.service.IBaseService;
 
 /**
  * @author ：Tony
@@ -11,4 +10,5 @@ import qf.service.IBaseService;
  * @version: $version$
  */
 public interface IStudentService extends IBaseService<Student> {
+    Student login(Student student);
 }

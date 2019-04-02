@@ -10,5 +10,5 @@ import com.qf.entity.Teacher;
  * @version: $version$
  */
 public interface ITeacherService extends IBaseService<Teacher> {
-    boolean login(Teacher teacher);
+    Teacher login(Teacher teacher);
 }

@@ -1,5 +1,7 @@
 package com.qf.service;
 
+import java.util.List;
+
 /**
  * @author ：Tony
  * @date ：Created in 2019/4/2 18:59
@@ -20,4 +22,5 @@ public interface IBaseService<T> {
 
     int updateByPrimaryKey(T t);
 
+    List<T> getList();
 }

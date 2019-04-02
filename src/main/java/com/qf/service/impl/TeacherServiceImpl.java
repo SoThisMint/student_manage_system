@@ -26,11 +26,7 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher> implements ITea
     }
 
     @Override
-    public boolean login(Teacher teacher) {
-        Teacher t = teacherMapper.selectByPrimaryKey(teacher.getId());
-        if(t!=null&&t.gettName().equals(teacher.gettName())){
-            return true;
-        }
-        return false;
+    public Teacher login(Teacher teacher) {
+        return teacherMapper.getTeacherByNameAndPassword(teacher.gettName(),teacher.gettPassword());
     }
 }

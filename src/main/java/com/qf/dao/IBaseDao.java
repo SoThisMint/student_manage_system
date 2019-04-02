@@ -1,5 +1,7 @@
 package com.qf.dao;
 
+import java.util.List;
+
 /**
  * @author ：Tony
  * @date ：Created in 2019/4/2 18:57
@@ -19,4 +21,6 @@ public interface IBaseDao<T> {
     int updateByPrimaryKeySelective(T t);
 
     int updateByPrimaryKey(T t);
+
+    List<T> getList();
 }

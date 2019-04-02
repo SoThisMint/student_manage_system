@@ -16,26 +16,20 @@
     <link href="static/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<h3>老师</h3>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
-        <form class="form form-horizontal"  method="post" id="login_body">
+        <form class="form form-horizontal" action="teacher/login" method="post" id="login_body">
             <div class="row cl">
                 <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                 <div class="formControls col-8">
-                    <input id="userName" name="userName" type="text" placeholder="账户" class="input-text size-L">
+                    <input id="tName" name="tName" type="text" placeholder="账户" class="input-text size-L">
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-3"><i class="Hui-iconfont">&#xe60e;</i></label>
                 <div class="formControls col-8">
-                    <input id="userPassword" name="userPassword" type="password" placeholder="密码" class="input-text size-L">
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-4">选择身份</label>
-                <div class="formControls col-8">
-                    学生：<input id="teacher" type="radio" name="role" value="学生" title="student" checked="checked">
-                    老师：<input id="student" type="radio" name="role" value="老师" title="teacher">
+                    <input id="sPassword" name="tPassword" type="tPassword" placeholder="密码" class="input-text size-L">
                 </div>
             </div>
             <div class="row">
@@ -49,15 +43,5 @@
 </div>
 <div class="footer">Copyright 你的公司名称 by H-ui.admin.v2.3</div>
 
-    <script src="static/lib/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        $("input[name='role']").click(function () {
-            if($(this).attr("id")=="teacher"){
-                $("#login_body").attr("action","student/login");
-            }else{
-                $("#login_body").attr("action","teacher/login");
-            }
-        })
-    </script>
 </body>
 </html>
