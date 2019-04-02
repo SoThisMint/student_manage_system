@@ -2,7 +2,6 @@ package com.qf.controller;
 
 import com.qf.common.Result;
 import com.qf.entity.Teacher;
-import com.qf.mapper.TeacherMapper;
 import com.qf.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,12 +28,12 @@ public class TeacherController {
     private ITeacherService teacherService;
 
     @RequestMapping("/login")
-    public String login(Teacher teacher, Model model){
+    public String login(Teacher teacher, Model model) {
         Teacher t = teacherService.login(teacher);
-        if(t!=null){
+        if (t != null) {
             List<Teacher> teacherList = teacherService.getList();
-            model.addAttribute("teacherList",teacherList);
-            model.addAttribute("teacher",t);
+            model.addAttribute("teacherList", teacherList);
+            model.addAttribute("teacher", t);
             return "teacherList";
         }
         return "teacherLogin";
@@ -42,69 +41,33 @@ public class TeacherController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(Teacher teacher){
-        Result result = new Result();
-        int res = teacherService.insertSelective(teacher);
-        if(res>0){
-            result.setData("添加成功！");
-            result.setResult(true);
-        }else{
-            result.setResult(false);
-            result.setData("添加失败！");
-        }
-        return result;
+    public Result add(Teacher teacher) {
+        return teacherService.add(teacher);
     }
 
     @RequestMapping("/delete")
     @ResponseBody
-    public Result delete(Integer id){
-        Result result = new Result();
-        int res = teacherService.deleteByPrimaryKey(id);
-        if(res>0){
-            result.setData("删除成功！");
-            result.setResult(true);
-        }else{
-            result.setResult(false);
-            result.setData("删除失败！");
-        }
-        return result;
+    public Result delete(Integer id) {
+        return teacherService.delete(id);
     }
 
     @RequestMapping("/toUpdate/{id}")
-    public String toUpdate(@PathVariable Integer id,Model model){
+    public String toUpdate(@PathVariable Integer id, Model model) {
         Teacher teacher = teacherService.selectByPrimaryKey(id);
-        model.addAttribute("teacher",teacher);
+        model.addAttribute("teacher", teacher);
         return "admin-teacher-edit";
     }
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(Teacher teacher){
-        Result result = new Result();
-        int res = teacherService.updateByPrimaryKeySelective(teacher);
-        if(res>0){
-            result.setData("修改成功！");
-            result.setResult(true);
-        }else{
-            result.setResult(false);
-            result.setData("修改失败！");
-        }
-        return result;
+    public Result update(Teacher teacher) {
+        return teacherService.update(teacher);
     }
 
     @RequestMapping("/batchDelete")
     @ResponseBody
-    public Result batchDelete(@RequestParam List<Integer> ids){
-        Result result = new Result();
-        int res = teacherService.batchDeleteByIds(ids);
-        if(res>0){
-            result.setData("批量删除成功！");
-            result.setResult(true);
-        }else{
-            result.setResult(false);
-            result.setData("批量删除失败！");
-        }
-        return result;
+    public Result batchDelete(@RequestParam List<Integer> ids) {
+        return teacherService.batchDelete(ids);
     }
 
 }

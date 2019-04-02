@@ -7,8 +7,6 @@ import com.qf.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author ：Tony
  * @date ：Created in 2019/4/2 18:59
@@ -32,8 +30,4 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher> implements ITea
         return teacherMapper.getTeacherByNameAndPassword(teacher.gettName(),teacher.gettPassword());
     }
 
-    @Override
-    public int batchDeleteByIds(List<Integer> ids) {
-        return teacherMapper.batchDeleteByIds(ids);
-    }
 }

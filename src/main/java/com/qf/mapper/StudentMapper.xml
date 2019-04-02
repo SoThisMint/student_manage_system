@@ -78,4 +78,10 @@
     <include refid="Base_Column_List" />
     from student
   </select>
+  <delete id="batchDelete" parameterType="int">
+    delete from student where id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

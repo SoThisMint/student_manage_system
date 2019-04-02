@@ -78,7 +78,7 @@
     <include refid="Base_Column_List" />
     from teacher
   </select>
-  <delete id="batchDeleteByIds" parameterType="int">
+  <delete id="batchDelete" parameterType="int">
     delete from teacher where id in
     <foreach collection="list" item="id" open="(" close=")" separator=",">
       #{id}

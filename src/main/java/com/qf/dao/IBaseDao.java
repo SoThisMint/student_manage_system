@@ -23,4 +23,6 @@ public interface IBaseDao<T> {
     int updateByPrimaryKey(T t);
 
     List<T> getList();
+
+    int batchDelete(List<Integer> ids);
 }

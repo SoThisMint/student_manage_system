@@ -1,5 +1,8 @@
 package com.qf.service;
 
+import com.qf.common.Result;
+import com.qf.entity.Student;
+
 import java.util.List;
 
 /**
@@ -23,4 +26,12 @@ public interface IBaseService<T> {
     int updateByPrimaryKey(T t);
 
     List<T> getList();
+
+    Result add(T t);
+
+    Result delete(Integer id);
+
+    Result update(T t);
+
+    Result batchDelete(List<Integer> ids);
 }

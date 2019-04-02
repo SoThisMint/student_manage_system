@@ -13,6 +13,4 @@ import java.util.List;
  */
 public interface ITeacherService extends IBaseService<Teacher> {
     Teacher login(Teacher teacher);
-
-    int batchDeleteByIds(List<Integer> ids);
 }
