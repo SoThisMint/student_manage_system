@@ -18,7 +18,7 @@
 <body>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
-        <form class="form form-horizontal" action="student/login" method="post">
+        <form class="form form-horizontal"  method="post" id="login_body">
             <div class="row cl">
                 <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                 <div class="formControls col-8">
@@ -32,15 +32,10 @@
                 </div>
             </div>
             <div class="row cl">
-                <div class="formControls col-8 col-offset-3">
-                    <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
-                    <img src="images/VerifyCode.aspx.png"> <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div>
-            </div>
-            <div class="row">
-                <div class="formControls col-8 col-offset-3">
-                    <label for="online">
-                        <input type="checkbox" name="online" id="online" value="">
-                        使我保持登录状态</label>
+                <label class="form-label col-4">选择身份</label>
+                <div class="formControls col-8">
+                    学生：<input id="teacher" type="radio" name="role" value="学生" title="student" checked="checked">
+                    老师：<input id="student" type="radio" name="role" value="老师" title="teacher">
                 </div>
             </div>
             <div class="row">
@@ -53,5 +48,16 @@
     </div>
 </div>
 <div class="footer">Copyright 你的公司名称 by H-ui.admin.v2.3</div>
+
+    <script src="static/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $("input[name='role']").click(function () {
+            if($(this).attr("id")=="teacher"){
+                $("#login_body").attr("action","student/login");
+            }else{
+                $("#login_body").attr("action","teacher/login");
+            }
+        })
+    </script>
 </body>
 </html>
