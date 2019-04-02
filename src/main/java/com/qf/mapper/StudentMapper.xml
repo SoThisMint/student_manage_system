@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.qf.entity.Student">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_password" jdbcType="VARCHAR" property="sPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, s_name, s_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qf.entity.Student">
+    insert into student (id, s_name, s_password
+      )
+    values (#{id,jdbcType=INTEGER}, #{sName,jdbcType=VARCHAR}, #{sPassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sPassword != null">
+        s_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null">
+        #{sPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.entity.Student">
+    update student
+    <set>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null">
+        s_password = #{sPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.entity.Student">
+    update student
+    set s_name = #{sName,jdbcType=VARCHAR},
+      s_password = #{sPassword,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

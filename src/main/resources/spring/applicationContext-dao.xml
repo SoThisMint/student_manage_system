@@ -38,12 +38,12 @@
                 <value>classpath:com/qf/mapper/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="com.qf.oa.entity"/>
+        <property name="typeAliasesPackage" value="com.qf.entity"/>
     </bean>
 
     <!-- 3.管理这些Mapper -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.qf.oa.mapper"/>
+        <property name="basePackage" value="com.qf.mapper"/>
     </bean>
 
 </beans>
